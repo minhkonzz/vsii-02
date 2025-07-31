@@ -1,0 +1,3 @@
+- In **breedSlice.ts**, it is better to separate **`status`** and **`error`** from the slice state and just manage them in the local state. Because the global store should only contain data that is really needed to be managed globally, states that can be managed in the local state should not be put into the global store.
+- Create a hook called **`useFetchWithThunk`** based on the logic of the created **`useFetch`** hook, **`status`** and **`error`** will be managed in the **`useFetchWithThunk`** hook instead of in the global state of **breedSlice.ts**, similar to how the **`useFetch`** hook manages 2 states: **`loading`** and **`error`**
+- Update **App.tsx** to use the **`useFetchWithThunk`** hook

@@ -1,0 +1,1 @@
+export const END_POINT = "https://dogapi.dog/api/v2/breeds";
