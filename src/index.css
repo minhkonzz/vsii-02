@@ -8,6 +8,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100vw;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,7 +28,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #121212;
+  background-color: #222222;
   color: #ffffff;
 }
 

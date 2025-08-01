@@ -7,11 +7,10 @@ import {
 } from "react";
 
 import type { AsyncThunk } from "@reduxjs/toolkit";
-import { useAppDispatch, useAppSelector, type RootState } from "../lib/store";
+import { useAppDispatch, useAppSelector, type RootState } from "@/lib/store";
 
 interface FetchThunkResult<S> {
   state: S;
-  loading: boolean;
   error: string;
   handleFetch: () => void;
   abort: () => void;
@@ -25,7 +24,6 @@ export const useFetchWithThunk = <T, S>(
   const state = useAppSelector(selector);
   const dispatch = useAppDispatch();
   const abortSignalRef = useRef<AbortController>(null);
-  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
@@ -37,32 +35,22 @@ export const useFetchWithThunk = <T, S>(
     abortSignalRef.current?.abort();
   };
 
-  const handleFetch = useCallback(() => {
+  const handleFetch = useCallback(async () => {
     try {
       abort();
       abortSignalRef.current = new AbortController();
       setError("");
-      setLoading(true);
       dispatch(thunkAction(abortSignalRef.current.signal));
     } catch (error) {
-      let errorMessage: string;
-      if ((error as Error).name === "AbortError") {
-        errorMessage = "Fetch Aborted";
-      } else {
-        console.error("Error fetching users:", error);
-        errorMessage = (error as Error).message;
-      }
-      setError(errorMessage);
-    } finally {
-      setLoading(false);
+      console.error("Error fetching users:", error);
+      setError((error as Error).message);
     }
   }, [abortSignalRef.current]);
 
   return {
     state,
-    loading,
     error,
     handleFetch,
-    abort,
+    abort
   };
 };

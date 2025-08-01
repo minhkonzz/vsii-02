@@ -1,6 +1,6 @@
 import { Card, CardContent, Typography, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import type { Breed } from '../types';
+import type { Breed } from '@/types';
 
 const Item = styled(Box)(({ theme }) => ({
   textAlign: 'center',

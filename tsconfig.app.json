@@ -22,7 +22,10 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "@/*": ["./src/*"] // Maps imports starting with @/ to files within 'src'
+    }
   },
   "include": ["src"]
 }
