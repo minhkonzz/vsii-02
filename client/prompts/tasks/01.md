@@ -1,0 +1,4 @@
+Implement these tasks:
+
+- In **App.tsx**, create 2 buttons horizontally above the breed list (2 buttons fill the width of the container). The left button is used to recall the API by calling **`handleFetch`** from the **`useFetchWithThunk`** hook (disable the button while requesting). The right button is used to abort calling the API by calling **`abort`** from the **`useFetchWithThunk`** hook.
+- Create a Spinner component that uses Material UI's CircularProgress component and a text on the right that receives values from props. Place the component in **src/components/shared**, make sure to use TypeScript properly
